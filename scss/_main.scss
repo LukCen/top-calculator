@@ -16,7 +16,8 @@ main {
 
 .screen,
 .keypad {
-  border: 1px dashed whitesmoke
+  border: 1px dashed whitesmoke;
+  display: grid;
 }
 
 .screen>input {
@@ -24,3 +25,36 @@ main {
   width: 100%;
   display: block;
 }
+
+.keypad {
+  grid-template-areas: "num num num"
+    "num num num"
+    "num num num";
+  grid-template-rows: 3fr 3fr 3fr;
+  // "special special result"
+  // "special special result";
+  place-content: center;
+  gap: 20px;
+
+}
+
+.btn {
+  min-height: 50px;
+  min-width: 50px;
+  background-color: steelblue;
+  color: white;
+  font-size: 2rem;
+  border: none;
+  border-radius: 5px;
+  display: grid;
+}
+
+// @for $i from 1 through 9 {
+//   .btn.btn-number.#{"num-#{$i}"} {
+//  grid-area: #{$i}
+// }
+// }
+
+// .btn.btn-number {
+//   grid-area: num;
+// }
