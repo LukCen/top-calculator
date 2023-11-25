@@ -1,0 +1,26 @@
+body {
+  background: #505050;
+}
+
+main {
+  height: 600px;
+  width: 400px;
+  display: grid;
+  flex-direction: column;
+  background-color: #313131;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 5px 5px #161616;
+  grid-template-rows: 1fr 11fr;
+}
+
+.screen,
+.keypad {
+  border: 1px dashed whitesmoke
+}
+
+.screen>input {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
