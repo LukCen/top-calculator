@@ -1,5 +1,5 @@
 body {
-  background: #505050;
+  background: #2e2d2d;
 }
 
 main {
@@ -7,7 +7,7 @@ main {
   width: 400px;
   display: grid;
   flex-direction: column;
-  background-color: #313131;
+  background-color: #4b4b4b;
   margin: 20px auto;
   border-radius: 10px;
   box-shadow: 5px 5px #161616;
@@ -16,9 +16,13 @@ main {
 
 .screen,
 .keypad {
-  border: 1px dashed whitesmoke;
   display: grid;
 }
+
+.screen {
+  padding: 5px;
+}
+
 
 .screen>input {
   height: 100%;
@@ -38,9 +42,10 @@ main {
 .btn {
   height: 50px;
   width: 50px;
-  min-height: 50px;
-  min-width: 50px;
+  min-height: 80px;
+  min-width: 80px;
   background-color: steelblue;
+  border: 2px solid rgb(1, 86, 243);
   color: white;
   font-size: 2rem;
   border: none;
@@ -49,13 +54,30 @@ main {
   cursor: pointer;
   place-content: center;
 
+  &:hover {
+    background-color: rgb(1, 86, 243);
+  }
+
   &.btn-result {
     grid-row: 4 / 6;
     grid-column: 3 / 3;
     height: 100%;
+    background-color: rgb(85, 12, 85);
+    border: 2px solid rgb(150, 37, 150);
+
+    &:hover {
+      background-color: rgb(150, 37, 150);
+    }
   }
 
-  &:hover {
-    background-color: rgb(1, 86, 243);
+  &.btn-special {
+    background-color: rgb(23, 161, 23);
+    border: 2px solid rgb(32, 110, 32);
+
+
+    &:hover {
+      background-color: rgb(32, 110, 32);
+    }
   }
+
 }
