@@ -17,7 +17,7 @@ const btnSpecial = document.querySelectorAll('.btn-special')
 // }
 
 class Calculation {
-  constructor(num1, num2, operation) {
+  constructor() {
     this.num1 = num1;
     this.num2 = num2;
     this.operation = operation
@@ -42,9 +42,15 @@ btnNum.forEach((button) => {
     screen.value += button.textContent
   })
 })
-const run = new Calculation()
 
 const runApp = () => {
+  const run = new Calculation()
 
 }
 
+/**
+ * add a check in the forEach loop
+ * if button's class has 'btn-number' - assign it to num1 or num2, if num1 exists
+ * if it has 'btn-special', assign the operator
+ * if its result, return the result
+ */
