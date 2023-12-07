@@ -1,30 +1,27 @@
 'use strict'
 
-const btnNum = document.querySelectorAll('.btn-number')
-let screen = document.querySelector('input')
+const btn = document.querySelectorAll('.btn')
+const screen = document.querySelector('input')
 screen.value = ''
 const btnSpecial = document.querySelectorAll('.btn-special')
-
-// let pairOfNumbers = (num1, num2, operation) => {
-//   switch (operation) {
-//     case ('add'):
-//       return num1 + num2
-//     case ('sub'):
-//       return num1 - num2
-//     case ('mult'):
-//       return parseFloat(num1 / num2).toFixed(2)
-//   }
-// }
-
+const calculationsStorage = []
 class Calculation {
-  constructor() {
-    this.num1 = num1;
-    this.num2 = num2;
+  constructor (num1, num2, operation) {
+    this.num1 = num1
+    this.num2 = num2
     this.operation = operation
   }
 
-  calc(){
-    switch(operation) {
+  getParam (param) {
+    return this.param
+  }
+
+  setParam (param, newValue) {
+    this.param = newValue
+  }
+
+  calc () {
+    switch (this.operation) {
       case 'add':
         return this.num1 + this.num2
       case 'sub':
@@ -35,16 +32,21 @@ class Calculation {
         return parseFloat(this.num1 / this.num2).toFixed(2)
     }
   }
+
+  store (container) {
+    container.push([this.num1, this.num2, this.operation])
+  }
 }
 
-btnNum.forEach((button) => {
+btn.forEach((button) => {
   button.addEventListener('click', () => {
-    screen.value += button.textContent
+    if (button.classList.contains('btn-number')) {
+      screen.value += button.textContent
+    }
   })
 })
 
 const runApp = () => {
-  const run = new Calculation()
 
 }
 
