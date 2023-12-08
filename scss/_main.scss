@@ -3,7 +3,7 @@ body {
 }
 
 main {
-  height: 600px;
+  height: 650px;
   width: 400px;
   display: grid;
   flex-direction: column;
@@ -36,7 +36,6 @@ main {
   place-content: center;
   gap: 10px;
   padding: 40px 0;
-
 }
 
 .btn {
@@ -54,12 +53,17 @@ main {
   cursor: pointer;
   place-content: center;
 
+  &:nth-of-type(10) {
+    grid-column: 1/ span 2;
+    width: 100%;
+  }
+
   &:hover {
     background-color: rgb(1, 86, 243);
   }
 
   &.btn-result {
-    grid-row: 4 / 6;
+    grid-row: 4 / 7;
     grid-column: 3 / 3;
     height: 100%;
     background-color: rgb(85, 12, 85);

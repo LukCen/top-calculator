@@ -3,9 +3,10 @@
 const btn = document.querySelectorAll('.btn')
 const screen = document.querySelector('input')
 screen.value = ''
-const btnSpecial = document.querySelectorAll('.btn-special')
+
 const calculationsStorage = []
 let currentInput = ''
+
 class Calculation {
   constructor (num1, num2, operation) {
     this.num1 = num1
@@ -23,13 +24,13 @@ class Calculation {
 
   calc () {
     switch (this.operation) {
-      case 'add':
-        return this.num1 + this.num2
-      case 'sub':
-        return this.num1 - this.num2
-      case 'mult':
-        return this.num1 * this.num2
-      case 'div':
+      case '+':
+        return parseFloat(this.num1 + this.num2).toFixed(2)
+      case '-':
+        return parseFloat(this.num1 - this.num2).toFixed(2)
+      case '*':
+        return parseFloat(this.num1 * this.num2).toFixed(2)
+      case '/':
         return parseFloat(this.num1 / this.num2).toFixed(2)
     }
   }
@@ -39,21 +40,39 @@ class Calculation {
   }
 }
 
-btn.forEach((button) => {
-  button.addEventListener('click', () => {
-    if (button.classList.contains('btn-number')) {
-      currentInput += button.textContent
-      screen.value = currentInput
-    } else if (button.classList.contains('btn-special')) {
-      currentInput += ` ${button.textContent} `
-      screen.value = currentInput
+const runApp = () => {
+  btn.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (button.classList.contains('btn-number')) {
+        currentInput += button.textContent
+        screen.value = currentInput
+      } else if (button.classList.contains('btn-special')) {
+        currentInput += ` ${button.textContent} `
+        screen.value = currentInput
+      }
+    })
+  })
+
+  document.querySelector('#result').addEventListener('click', () => {
+    if (currentInput.trim() !== '') {
+      const parts = currentInput.split(' ')
+      const num1 = parseFloat(parts[0])
+      const num2 = parseFloat(parts[2])
+      const operation = parts[1]
+
+      if (!isNaN(num1) && !isNaN(num2) && operation) {
+        const newCalculation = new Calculation(num1, num2, operation)
+        const finalResult = newCalculation.calc()
+        screen.value = finalResult
+        currentInput = finalResult
+      } else {
+        alert('Invalid input')
+      }
     }
   })
-})
-
-const runApp = () => {
-
 }
+
+runApp()
 
 /**
  * add a check in the forEach loop

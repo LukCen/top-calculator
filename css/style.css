@@ -138,7 +138,7 @@ body {
 }
 
 main {
-  height: 600px;
+  height: 650px;
   width: 400px;
   display: grid;
   flex-direction: column;
@@ -187,11 +187,15 @@ main {
   cursor: pointer;
   place-content: center;
 }
+.btn:nth-of-type(10) {
+  grid-column: 1/span 2;
+  width: 100%;
+}
 .btn:hover {
   background-color: rgb(1, 86, 243);
 }
 .btn.btn-result {
-  grid-row: 4/6;
+  grid-row: 4/7;
   grid-column: 3/3;
   height: 100%;
   background-color: rgb(85, 12, 85);
