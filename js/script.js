@@ -5,6 +5,7 @@ const screen = document.querySelector('input')
 screen.value = ''
 const btnSpecial = document.querySelectorAll('.btn-special')
 const calculationsStorage = []
+let currentInput = ''
 class Calculation {
   constructor (num1, num2, operation) {
     this.num1 = num1
@@ -13,7 +14,7 @@ class Calculation {
   }
 
   getParam (param) {
-    return this.param
+    return param
   }
 
   setParam (param, newValue) {
@@ -41,7 +42,11 @@ class Calculation {
 btn.forEach((button) => {
   button.addEventListener('click', () => {
     if (button.classList.contains('btn-number')) {
-      screen.value += button.textContent
+      currentInput += button.textContent
+      screen.value = currentInput
+    } else if (button.classList.contains('btn-special')) {
+      currentInput += ` ${button.textContent} `
+      screen.value = currentInput
     }
   })
 })
