@@ -18,20 +18,12 @@ const multiply = (a, b) => {
 const divide = (a, b) => {
   return parseFloat(a / b).toFixed(2)
 }
-const calculate = (a, b, operator) => {
-  switch (operator) {
-    case '+':
-      add(a, b)
-      break
-    case '-':
-      subtract(a, b)
-  }
-}
 
 const runApp = () => {
   let firstNum = 0
   let secondNum = 0
-  // let operator = null
+  let operator = null
+  let result = 0
   btn.forEach((button) => {
     button.addEventListener('click', () => {
       if (button.classList.contains('btn-number')) {
@@ -43,7 +35,41 @@ const runApp = () => {
           screen.value += button.innerText
         }
       }
-      console.log(`FIRST : ${firstNum} | SECOND: ${secondNum}`)
+      if (button.classList.contains('btn-special')) {
+        screen.value += button.innerText
+        switch (button.id) {
+          case 'add':
+            operator = '+'
+            break
+          case 'sub':
+            operator = '-'
+            break
+          case 'mult':
+            operator = '*'
+            break
+          case 'div':
+            operator = '/'
+            break
+        }
+      }
+      if (button.id === 'result') {
+        switch (operator) {
+          case '+':
+            result = add(firstNum, secondNum)
+            break
+          case '-':
+            result = subtract(firstNum, secondNum)
+            break
+          case '*':
+            result = multiply(firstNum, secondNum)
+            break
+          case '/':
+            result = divide(firstNum, secondNum)
+            break
+        }
+        console.log(result)
+        screen.value = result
+      }
     })
   })
 }
