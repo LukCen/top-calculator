@@ -23,15 +23,14 @@ const runApp = () => {
   let firstNum = 0
   let secondNum = 0
   let operator = null
-  let result = 0
+  let result = null
   btn.forEach((button) => {
     button.addEventListener('click', () => {
       if (button.classList.contains('btn-number')) {
-        if (screen.value === '') {
-          firstNum = parseInt(button.innerText)
+        if (screen.value === '' || operator === null) {
           screen.value += button.innerText
         } else {
-          secondNum = parseInt(button.innerText)
+          firstNum = parseInt(screen.value)
           screen.value += button.innerText
         }
       }
@@ -53,6 +52,7 @@ const runApp = () => {
         }
       }
       if (button.id === 'result') {
+        secondNum = parseInt(screen.value)
         switch (operator) {
           case '+':
             result = add(firstNum, secondNum)
@@ -67,7 +67,7 @@ const runApp = () => {
             result = divide(firstNum, secondNum)
             break
         }
-        console.log(result)
+        console.log(result, typeof result)
         screen.value = result
       }
     })
