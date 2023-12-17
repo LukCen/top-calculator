@@ -29,9 +29,11 @@ const runApp = () => {
       if (button.classList.contains('btn-number')) {
         if (screen.value === '' || operator === null) {
           screen.value += button.innerText
+          firstNum += button.innerText
         } else {
-          firstNum = parseInt(screen.value)
+          
           screen.value += button.innerText
+          secondNum += button.innerText
         }
       }
       if (button.classList.contains('btn-special')) {
@@ -52,22 +54,21 @@ const runApp = () => {
         }
       }
       if (button.id === 'result') {
-        secondNum = parseInt(screen.value)
         switch (operator) {
           case '+':
-            result = add(firstNum, secondNum)
+            result = add(parseInt(firstNum), parseInt(secondNum))
             break
           case '-':
-            result = subtract(firstNum, secondNum)
+            result = subtract(parseInt(firstNum), parseInt(secondNum))
             break
           case '*':
-            result = multiply(firstNum, secondNum)
+            result = multiply(parseInt(firstNum), parseInt(secondNum))
             break
           case '/':
-            result = divide(firstNum, secondNum)
+            result = divide(parseFloat(firstNum), parseFloat(secondNum))
             break
         }
-        console.log(result, typeof result)
+
         screen.value = result
       }
     })
