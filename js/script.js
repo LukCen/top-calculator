@@ -68,8 +68,10 @@ const runApp = () => {
             result = divide(parseFloat(firstNum), parseFloat(secondNum))
             break
         }
-
+        firstNum = result
         screen.value = result
+        secondNum = 0
+
       }
     })
   })
