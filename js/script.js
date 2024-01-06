@@ -18,12 +18,18 @@ const multiply = (a, b) => {
 const divide = (a, b) => {
   return parseFloat(a / b).toFixed(2)
 }
-
 const runApp = () => {
   let firstNum = 0
   let secondNum = 0
   let operator = null
   let result = null
+  const clearAll = () => {
+    firstNum = 0
+    secondNum = 0
+    operator = null
+    result = null
+    screen.value = ''
+  }
   btn.forEach((button) => {
     button.addEventListener('click', () => {
       if (button.classList.contains('btn-number')) {
@@ -31,7 +37,6 @@ const runApp = () => {
           screen.value += button.innerText
           firstNum += button.innerText
         } else {
-          
           screen.value += button.innerText
           secondNum += button.innerText
         }
@@ -71,7 +76,9 @@ const runApp = () => {
         firstNum = result
         screen.value = result
         secondNum = 0
-
+      }
+      if (button.classList.contains('btn-clear-all')) {
+        clearAll()
       }
     })
   })

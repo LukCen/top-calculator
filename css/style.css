@@ -187,15 +187,11 @@ main {
   cursor: pointer;
   place-content: center;
 }
-.btn:nth-of-type(10) {
-  grid-column: 1/span 2;
-  width: 100%;
-}
 .btn:hover {
   background-color: rgb(1, 86, 243);
 }
 .btn.btn-result {
-  grid-row: 4/7;
+  grid-row: 5/7;
   grid-column: 3/3;
   height: 100%;
   background-color: rgb(85, 12, 85);
@@ -210,6 +206,12 @@ main {
 }
 .btn.btn-special:hover {
   background-color: rgb(32, 110, 32);
+}
+.btn.btn-clear, .btn.btn-clear-all {
+  background-color: rgb(255, 170, 0);
+}
+.btn.btn-clear:hover, .btn.btn-clear-all:hover {
+  background-color: rgb(255, 132, 0);
 }
 
 @media screen and (max-width: 787px) {
